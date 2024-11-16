@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking Area Stats</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <form id="statsForm" method="post" action="fetch_stats.php">
+        <label for="faculty_id">Select Faculty:</label>
+        <select id="faculty_id" name="faculty_id">
+            <option value="1">Faculty of Business & Economics</option>
+            <option value="2">Faculty of Law</option>
+            <option value="3">Faculty of Islamic Religious Sciences</option>
+            <option value="4">Faculty of Medicine</option>
+            <option value="5">Faculty of Mathematics and Natural Sciences</option>
+            <option value="6">Faculty of Psychology and Social and Cultural Sciences</option>
+            <option value="7">Faculty of Civil Engineering and Planning</option>
+            <option value="8">Faculty of Industrial Technology</option>
+        </select><br><br>
+
+        <label for="area_type">Select Area Type:</label>
+        <select id="area_type" name="area_type">
+            <option value="Car">Car</option>
+            <option value="Motorcycle">Motorcycle</option>
+        </select><br><br>
+
+        <input type="submit" value="Display Stats">
+    </form>
+
+    <div style="width: 50%;">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <script>
+        document.getElementById('statsForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('fetch_stats.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var unavailableSpaces = data.unavailable_spaces;
+                var availableSpaces = data.available_spaces;
+
+                var ctx = document.getElementById('pieChart').getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Unavailable Spaces', 'Available Spaces'],
+                        datasets: [{
+                            data: [unavailableSpaces, availableSpaces],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.8)',
+                                'rgba(54, 162, 235, 0.8)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                        // Other chart options can be added here as needed
+                    }
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
