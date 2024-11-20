@@ -1,27 +1,40 @@
-# Sentiment Analysis Using R
+# SmartCity - Community Engagement Desktop Application
 
-Welcome to the **Sentiment Analysis Using R** project! This repository demonstrates how to build a sentiment analysis model using **R programming** and the `tidytext` package. The goal is to analyze text data, assign sentiment scores to words, and classify them based on their polarity (positive, negative, or neutral). This project provides a comprehensive guide, from data preprocessing to the visualization of sentiment results.
+**SmartCity** is a desktop application designed to enhance community engagement with local government. The application allows community members to report public issues, track their resolution, and communicate transparently with government officials. Built with **JavaFX**, this application features an intuitive and responsive interface to bridge the gap between citizens and governance.
 
 ---
 
 ## Features
 
-- **Data Cleaning and Preprocessing**: Converts text to lower case, removes punctuation, and eliminates stopwords.
-- **Sentiment Scoring**: Uses lexicons from the `tidytext` package to assign polarity scores.
-- **Visualization**: Displays results using graphical tools such as bar charts and word clouds.
-- **Customizable**: Easily adapt the code for different datasets or languages.
+- **Issue Reporting**: Citizens can report public issues such as potholes, broken streetlights, or garbage collection problems.
+- **Issue Tracking**: Users can monitor the status of reported issues for transparency and accountability.
+- **User-Friendly Interface**: A modern desktop GUI built with **JavaFX** for seamless interaction.
+- **Data Storage**: Uses **XML files** to store user data, reported issues, and their statuses.
+- **Role-Based Access**:
+  - **Citizens**: Report and track issues.
+  - **Officials**: View, manage, and resolve reported issues.
 
 ---
 
-## Dataset
+## Technology Stack
 
-This project uses the `janeaustenR` package to access text data from Jane Austen's works. However, you can replace it with your own dataset for more personalized results.
+- **Frontend**: JavaFX for creating a dynamic and user-friendly GUI.
+- **Backend**: Java for core application logic and business rules.
+- **Data Storage**: XML files for structured and portable data storage.
+- **Build Tool**: Maven/Gradle for dependency management and project building.
 
 ---
 
-## Installation
+## Installation and Setup
 
-1. Clone this repository:
+### Prerequisites
+
+- JDK 8 or higher installed on your system.
+- JavaFX SDK (ensure it's properly configured in your IDE).
+
+### Steps to Run the Application
+
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/sentiment-analysis-r.git
-   cd sentiment-analysis-r
+   git clone https://github.com/your-username/SMART-PARKING-main.git
+   cd SmartCity
